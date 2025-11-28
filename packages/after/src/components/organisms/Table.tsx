@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Badge } from '../atoms/Badge';
-import { Button } from '../atoms/Button';
+import { Button } from '../ui/button';
 
 interface Column {
   key: string;
@@ -125,11 +125,11 @@ export const Table: React.FC<TableProps> = ({
       }
       if (columnKey === 'actions') {
         return (
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <Button size="sm" variant="primary" onClick={() => onEdit?.(row)}>
+          <div className="flex gap-2">
+            <Button size="sm" variant="primary" onClick={() => onEdit?.(row)} type="button">
               수정
             </Button>
-            <Button size="sm" variant="danger" onClick={() => onDelete?.(row.id)}>
+            <Button size="sm" variant="danger" onClick={() => onDelete?.(row.id)} type="button">
               삭제
             </Button>
           </div>
@@ -154,8 +154,8 @@ export const Table: React.FC<TableProps> = ({
       }
       if (columnKey === 'actions') {
         return (
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            <Button size="sm" variant="primary" onClick={() => onEdit?.(row)}>
+          <div className="flex flex-wrap gap-2">
+            <Button size="sm" variant="primary" onClick={() => onEdit?.(row)} type="button">
               수정
             </Button>
             {row.status === 'draft' && (
@@ -163,6 +163,7 @@ export const Table: React.FC<TableProps> = ({
                 size="sm"
                 variant="success"
                 onClick={() => onPublish?.(row.id)}
+                type="button"
               >
                 게시
               </Button>
@@ -172,6 +173,7 @@ export const Table: React.FC<TableProps> = ({
                 size="sm"
                 variant="secondary"
                 onClick={() => onArchive?.(row.id)}
+                type="button"
               >
                 보관
               </Button>
@@ -181,11 +183,12 @@ export const Table: React.FC<TableProps> = ({
                 size="sm"
                 variant="primary"
                 onClick={() => onRestore?.(row.id)}
+                type="button"
               >
                 복원
               </Button>
             )}
-            <Button size="sm" variant="danger" onClick={() => onDelete?.(row.id)}>
+            <Button size="sm" variant="danger" onClick={() => onDelete?.(row.id)} type="button">
               삭제
             </Button>
           </div>
