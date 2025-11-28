@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 // import { Badge } from '../components/atoms';
 import { Button } from '../components/ui/button';
-import { Alert, Table, Modal } from '../components/organisms';
+import { DataTable } from '../components/DataTable.tsx';
+import { Alert, Modal } from '../components/organisms';
 import { FormInput, FormSelect, FormTextarea } from '../components/molecules';
 import { userService } from '../services/userService';
 import { postService } from '../services/postService';
@@ -350,11 +351,9 @@ export const ManagementPage: React.FC = () => {
             </div>
 
             <div style={{ border: '1px solid #ddd', background: 'white', overflow: 'auto' }}>
-              <Table
+              <DataTable
                 columns={renderTableColumns()}
                 data={data}
-                striped
-                hover
                 entityType={entityType}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
